@@ -1,0 +1,574 @@
+:root {
+    --primary: 210 100% 50%; /* #0080FF */
+    --secondary: 210 50% 30%; /* #266BB3 */
+    --success: 142 76% 36%; /* #22C55E */
+    --warning: 45 93% 58%; /* #EAB308 */
+    --danger: 0 84% 60%; /* #EF4444 */
+    --dark: 210 11% 15%; /* #1F2937 */
+    --light: 210 11% 98%; /* #F5F7FA */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 50%) 0%, hsl(210 80% 40%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(210 11% 15%) 0%, hsl(210 11% 25%) 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: hsl(var(--dark));
+    background-color: hsl(var(--light));
+}
+
+/* Navigation Styles */
+.navbar {
+    background: var(--gradient-dark) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: hsl(var(--primary)) !important;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: hsl(var(--primary));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    background: var(--gradient-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.sports-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 40px;
+}
+
+.sports-icon {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.sports-icon:hover {
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Page Header */
+.page-header {
+    background: var(--gradient-dark);
+    padding: 100px 0 50px;
+    text-align: center;
+}
+
+/* Feature Cards */
+.feature-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+/* Sport Cards */
+.sport-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sport-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.sport-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    background: hsl(var(--light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.sport-card[data-sport="cricket"] .sport-icon {
+    color: hsl(var(--primary));
+}
+
+.sport-card[data-sport="football"] .sport-icon {
+    color: hsl(var(--success));
+}
+
+.sport-card[data-sport="badminton"] .sport-icon {
+    color: hsl(var(--warning));
+}
+
+.sport-card[data-sport="volleyball"] .sport-icon {
+    color: hsl(var(--danger));
+}
+
+.sport-card:hover .sport-icon {
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* Sports Section Styles */
+.sport-section {
+    padding: 60px 0;
+}
+
+.sport-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sport-icon-large {
+    font-size: 3rem;
+    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sport-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.sport-leader {
+    background: hsl(var(--light));
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.sport-features ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sport-features ul li:last-child {
+    border-bottom: none;
+}
+
+/* Leadership Styles */
+.faculty-card {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.leader-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: none;
+    overflow: hidden;
+}
+
+.leader-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.leader-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    position: relative;
+}
+
+.faculty-avatar {
+    background: var(--gradient-primary);
+}
+
+.cricket-theme {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(210 80% 40%) 100%);
+}
+
+.football-theme {
+    background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(142 70% 30%) 100%);
+}
+
+.badminton-theme {
+    background: linear-gradient(135deg, hsl(var(--warning)) 0%, hsl(45 80% 45%) 100%);
+}
+
+.volleyball-theme {
+    background: linear-gradient(135deg, hsl(var(--danger)) 0%, hsl(0 70% 50%) 100%);
+}
+
+.leader-stats {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.stat i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+/* Contact Styles */
+.contact-info {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.contact-details h6 {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: hsl(var(--dark));
+}
+
+.sport-contact-list {
+    background: hsl(var(--light));
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.sport-contact-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sport-contact-item:last-child {
+    border-bottom: none;
+}
+
+/* Form Styles */
+.form-control {
+    border: 2px solid hsl(var(--light));
+    border-radius: 10px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+}
+
+.form-select {
+    border: 2px solid hsl(var(--light));
+    border-radius: 10px;
+    padding: 12px 15px;
+}
+
+.form-select:focus {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 10px;
+    padding: 12px 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+}
+
+.btn-outline-primary {
+    border: 2px solid hsl(var(--primary));
+    color: hsl(var(--primary));
+}
+
+.btn-outline-primary:hover {
+    background: hsl(var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+}
+
+.btn-outline-light {
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background: white;
+    color: hsl(var(--primary));
+    transform: translateY(-2px);
+}
+
+/* Footer Styles */
+.footer {
+    background: var(--gradient-dark);
+    color: white;
+    padding: 50px 0 20px;
+    margin-top: 50px;
+}
+
+.footer h5 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.footer p,
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: hsl(var(--primary));
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sports-icons {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .sports-icon {
+        font-size: 3rem;
+    }
+    
+    .sport-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .sport-icon-large {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .hero-section {
+        padding: 50px 0;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .leader-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-icon {
+        margin: 0 auto 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .feature-card,
+    .sport-card,
+    .leader-card {
+        padding: 30px 20px;
+    }
+    
+    .contact-info {
+        padding: 30px 20px;
+    }
+    
+    .hero-section {
+        padding: 30px 0;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Utility Classes */
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bg-gradient-primary {
+    background: var(--gradient-primary);
+}
+
+.bg-gradient-dark {
+    background: var(--gradient-dark);
+}
+
+.shadow-custom {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.border-gradient {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                var(--gradient-primary) border-box;
+}
